@@ -1,14 +1,18 @@
+/* Container for the discovery section */
 .discover-container {
+    /* Background gradient and image */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url("../../assets/discover/discover-background.svg");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: 100%;
 
+    /* Margin and padding */
     margin-top: 8rem;
     padding: 1rem;
     width: 100%;
 
+    /* Media queries for responsiveness */
     @media (max-width: 1367px) {
         margin-top: 4rem;
     }
@@ -22,6 +26,7 @@
     }
 }
 
+/* Styling for the subheading */
 .discover-sub-heading {
     display: block;
 
@@ -35,6 +40,7 @@
     text-align: center;
     text-transform: capitalize;
 
+    /* Media queries for responsiveness */
     @media (max-width: 768px) {
         font-size: 40px;
     }
@@ -43,10 +49,12 @@
         font-size: 26px;
     }
 
+    /* Positioning and z-index */
     position: relative;
     z-index: 2;
 }
 
+/* Styling for the heading */
 .discover-heading {
     color: #ffffff;
 
@@ -58,9 +66,11 @@
     text-align: center;
     text-transform: uppercase;
 
+    /* Maximum width and centering */
     max-width: 20ch;
     margin: 0 auto;
 
+    /* Media queries for responsiveness */
     @media (max-width: 1367px) {
         font-size: 64px;
     }
@@ -73,49 +83,37 @@
         font-size: 40px;
     }
 
+    /* Positioning and z-index */
     position: relative;
     z-index: 2;
 }
 
+/* Container for the graphic and sponsor section */
 .discover-graphic-container {
     display: flex;
     justify-content: center;
 
     position: relative;
-    // top: -9rem;
     top: -6rem;
 
     max-width: 80vh;
     margin: 0 auto;
 
+    /* Media queries for responsiveness */
     @media (max-width: 800px) {
         top: 0;
-        // display: flex;
-        // flex-direction: column;
-        // gap: 2rem;
+
+        /* Display flex and align items for smaller screens */
+        /* display: flex;
+        flex-direction: column;
+        gap: 2rem; */
     }
 
+    /* Graphic styling */
     .discover-graphic {
         max-width: 100%;
         display: block;
 
         position: relative;
-        // z-index: -1;
-    }
 
-    .sponsor-container {
-        position: absolute;
-        // bottom: 5rem;
-        bottom: 4.5%;
-
-        @media (max-width: 512px) {
-            bottom: 4%;
-
-            // position: initial;
-            // display: flex;
-            // justify-content: center;
-            // align-items: center;
-            // margin: 0 auto;
-        }
-    }
-}
+        /* Z-index for
