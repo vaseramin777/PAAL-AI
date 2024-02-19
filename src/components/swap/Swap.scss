@@ -1,185 +1,131 @@
+/* Container for the swap section */
 .swap-container {
     color: white;
 
+    /* Styles for h3 heading */
     h3 {
-        font-family: "Integral CF", sans-serif;
-        font-weight: 700;
-        font-size: 3.5rem;
-        line-height: 1.5rem;
+        font-family: "Integral CF", sans-serif; /* Integral CF font family */
+        font-weight: 700; /* Bold font weight */
+        font-size: 3.5rem; /* Font size of 3.5rem */
+        line-height: 1.5rem; /* Line height of 1.5rem */
 
+        /* Media query for screens with max-width of 768px */
         @media (max-width: 768px) {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Font size of 2.5rem for smaller screens */
         }
     }
 
+    /* Styles for swap-card */
     .swap-card {
-        padding: 2rem;
-        border: 1px solid white;
-        border-radius: 2rem;
+        padding: 2rem; /* Padding of 2rem */
+        border: 1px solid white; /* Border of 1px solid white */
+        border-radius: 2rem; /* Border radius of 2rem */
 
+        /* Styles for heading */
         .heading {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            display: flex; /* Display as a flex container */
+            align-items: center; /* Center align items */
+            gap: 0.4rem; /* Gap of 0.4rem */
 
-            margin-bottom: 2rem;
+            margin-bottom: 2rem; /* Margin bottom of 2rem */
 
+            /* Styles for label */
             .label {
-                color: white;
-                opacity: 0.6;
-                font-family: "Integral CF", sans-serif;
+                color: white; /* Color of white */
+                opacity: 0.6; /* Opacity of 0.6 */
+                font-family: "Integral CF", sans-serif; /* Integral CF font family */
             }
 
+            /* Styles for swap-coin-icon */
             .swap-coin-icon {
-                border-radius: 50%;
-                height: 2rem;
-                width: 2rem;
+                border-radius: 50%; /* Border radius of 50% */
+                height: 2rem; /* Height of 2rem */
+                width: 2rem; /* Width of 2rem */
             }
 
+            /* Styles for coin-name */
             .coin-name {
-                font-family: "Integral CF", sans-serif;
-                font-weight: 700;
-                font-size: 1.2rem;
-                line-height: 1.2rem;
+                font-family: "Integral CF", sans-serif; /* Integral CF font family */
+                font-weight: 700; /* Bold font weight */
+                font-size: 1.2rem; /* Font size of 1.2rem */
+                line-height: 1.2rem; /* Line height of 1.2rem */
             }
         }
 
+        /* Styles for select-row */
         .select-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
+            display: flex; /* Display as a flex container */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center align items */
+            gap: 2rem; /* Gap of 2rem */
 
+            /* Media query for screens with max-width of 768px */
             @media (max-width: 768px) {
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: column; /* Change direction to column */
+                gap: 1rem; /* Change gap to 1rem */
             }
 
+            /* Styles for token-search */
             .token-search {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                position: relative;
+                display: flex; /* Display as a flex container */
+                align-items: center; /* Center align items */
+                gap: 1rem; /* Gap of 1rem */
+                position: relative; /* Position relative */
 
+                /* Media query for screens with max-width of 768px */
                 @media (max-width: 768px) {
-                    width: 100%;
+                    width: 100%; /* Make width 100% for smaller screens */
                 }
 
+                /* Styles for coin-icon */
                 .coin-icon {
-                    width: 2rem;
-                    height: 2rem;
-                    border-radius: 50%;
+                    width: 2rem; /* Width of 2rem */
+                    height: 2rem; /* Height of 2rem */
+                    border-radius: 50%; /* Border radius of 50% */
                 }
 
+                /* Styles for input */
                 .input {
-                    font-family: "Integral CF", sans-serif;
-                    border: 1px solid #a12aeb;
-                    border-radius: 2rem;
-                    background: transparent;
-                    padding: 0.4rem 1rem;
-                    padding-bottom: 0.6rem;
-                    font-size: 1.5rem;
-                    color: white;
-                    width: 200px;
+                    font-family: "Integral CF", sans-serif; /* Integral CF font family */
+                    border: 1px solid #a12aeb; /* Border of 1px solid #a12aeb */
+                    border-radius: 2rem; /* Border radius of 2rem */
+                    background: transparent; /* Background transparent */
+                    padding: 0.4rem 1rem; /* Padding of 0.4rem 1rem */
+                    padding-bottom: 0.6rem; /* Padding bottom of 0.6rem */
+                    font-size: 1.5rem; /* Font size of 1.5rem */
+                    color: white; /* Color of white */
+                    width: 200px; /* Width of 200px */
                 }
 
+                /* Styles for dropdown-button */
                 .dropdown-button {
-                    background: transparent;
-                    border: none;
+                    background: transparent; /* Background transparent */
+                    border: none; /* Border none */
 
+                    /* Styles for dropdown-icon */
                     .dropdown-icon {
-                        height: 2rem;
-                        color: white;
+                        height: 2rem; /* Height of 2rem */
+                        color: white; /* Color of white */
 
+                        /* Styles for hover */
                         &:hover {
-                            cursor: pointer;
+                            cursor: pointer; /* Change cursor to pointer on hover */
                         }
                     }
                 }
             }
 
+            /* Styles for options */
             .options {
-                max-height: 20rem;
-                overflow-y: auto;
-                list-style: none;
-                position: absolute;
-                top: 3rem;
-                left: 0;
-                width: 100%;
-                background: black;
+                max-height: 20rem; /* Max height of 20rem */
+                overflow-y: auto; /* Overflow-y auto */
+                list-style: none; /* List style none */
+                position: absolute; /* Position absolute */
+                top: 3rem; /* Top of 3rem */
+                left: 0; /* Left of 0 */
+                width: 100%; /* Width of 100% */
+                background: black; /* Background black */
 
+                /* Styles for option */
                 .option {
-                    font-family: "Integral CF", sans-serif;
-                    font-weight: 700;
-                    padding: 0.2rem;
-
-                    display: flex;
-                    gap: 0.4rem;
-                    align-items: center;
-
-                    img {
-                        height: 1rem;
-                        width: 1rem;
-                    }
-
-                    &:hover {
-                        background: #a12aeb;
-                        cursor: pointer;
-                    }
-                }
-            }
-
-            .stats {
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-
-                input {
-                    font-family: "Integral CF", sans-serif;
-                    border: none;
-                    background: none;
-
-                    width: 100%;
-                    //min-width: 200px;
-                    //
-                    //@media (max-width: 768px) {
-                    //}
-
-                    font-size: 3rem;
-                    color: white;
-                    text-align: right;
-                    font-weight: bold;
-                    padding: 0.2rem 2rem;
-                    border-radius: 2rem;
-
-                    &::-webkit-outer-spin-button,
-                    &::-webkit-inner-spin-button {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
-
-    .connect-button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-    }
-
-    .swap-methods-container {
-        @media (max-width: 1024px) {
-            flex-direction: column;
-            justify-content: center;
-        }
-    }
-
-    iframe {
-        border: none;
-
-        @media (max-width: 768px) {
-            width: 100%;
-        }
-    }
-}
+                    font-family: "Integral CF", sans
