@@ -1,26 +1,22 @@
+/* Container for the tagline */
 .tagline-container {
+    /* Add padding to the top and bottom of the container */
     padding: 6.25rem 0;
 
-    // background: url("../../assets/tagline/tagline-banner.png") no-repeat center;
+    /* Use a linear gradient and an image for the background */
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-        url("../../assets/empowered/empowered.png") no-repeat center;
+        url("../../assets/tagline,/tagline-banner.png") no-repeat center;
     background-size: cover;
 }
 
+/* The tagline text */
 .tagline-text {
+    /* Use a purple color with some transparency */
     color: rgba(172, 43, 249, 0.5);
 
+    /* Use the Integral CF font with normal style and weight */
     font-family: "Integral CF";
     font-style: normal;
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 139.5%;
 
-    text-align: center;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-
-    @media (max-width: 480px) {
-        font-size: 14px;
-    }
-}
+    /* Set the font size to 1rem and the line height to 1
