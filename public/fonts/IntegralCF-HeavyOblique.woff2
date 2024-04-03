@@ -5,19 +5,18 @@ import sys  # For command line arguments
 import os  # For file operations
 
 # Defining a function to reverse words in a sentence
-def reverseWords(sentence):
+def reverse_words(sentence):
     # Splitting the sentence into words
     words = sentence.split()
     
     # Reversing the order of words
-    reversedWords = words[::-1]
+    reversed_words = words[::-1]
     
     # Joining the words to form a sentence
-    reversedSentence = ' '.join(reversedWords)
+    reversed_sentence = ' '.join(reversed_words)
     
     # Returning the reversed sentence
-    return reversedSentence
-
+    return reversed_sentence
 
 # Checking if command line arguments are provided
 if len(sys.argv) > 1:
@@ -26,16 +25,20 @@ if len(sys.argv) > 1:
     
     # Checking if the file exists
     if os.path.isfile(filename):
-        # Opening the file in read mode
-        with open(filename, 'r') as file:
-            # Reading the content of the file
-            content = file.read()
-            
-            # Calling the function to reverse words
-            reversedContent = reverseWords(content)
-            
-            # Printing the reversed content
-            print(reversedContent)
+        # Checking if the file can be opened in read mode
+        try:
+            with open(filename, 'r') as file:
+                # Reading the content of the file
+                content = file.read()
+                
+                # Calling the function to reverse words
+                reversed_content = reverse_words(content)
+                
+                # Printing the reversed content
+                print(reversed_content)
+        except Exception as e:
+            # Printing an error message if there's an issue while opening the file
+            print(f"Error: {e}")
     else:
         # Printing an error message if the file does not exist
         print(f"The file '{filename}' does not exist.")
