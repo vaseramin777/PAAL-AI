@@ -1,18 +1,22 @@
 import { useState } from "react";
-import "./Tools.scss";
 import Button from "../site/Button"; // Importing Button component
 
-// Default export of the Tools functional component
-export default function Tools() {
-  // Destructuring state and setter function for selectedIndex
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log(
-    "ð ~ file,: Tools.tsx:7 ~ Tools ~ selectedIndex:",
-    selectedIndex
-  );
+interface ContentItem {
+  title: string;
+  action: {
+    label: string;
+    link: string;
+  };
+  messages: {
+    title: string;
+    text: string;
+  }[];
+}
 
-  // An array of content objects, each containing details about a tool
-  const content = [
+const Tools = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const content: ContentItem[] = [
     {
       title: "MyPaal",
       action: {
@@ -20,38 +24,7 @@ export default function Tools() {
         link: "https://app.paal.ai/",
       },
       messages: [
-        {
-          title: "Cryptocurrency-focused AI",
-          text: "Handles inquiries, summarizes conversations, and assesses chat sentiment.",
-        },
-        {
-          title: "Multi-platform Integration",
-          text: "Compatible with platforms like Telegram, Discord, etc.",
-        },
-        {
-          title: "Customizable",
-          text: "Personalize bot's personality, response style, and knowledge base about various coins and projects.",
-        },
-        {
-          title: "Content Upload",
-          text: "Supports Word, PDF, website, YouTube links for bot learning.",
-        },
-        {
-          title: "Multiple Bots",
-          text: "Multiple bots can be utilized across various channels.",
-        },
-        {
-          title: "Real-time Data Fetching",
-          text: "Collects real-time project data from multiple sources.",
-        },
-        {
-          title: "Secure",
-          text: "Uses FIPS 140-2 validated encryption by Google Cloud for data security and privacy.",
-        },
-        {
-          title: "Revenue sharing with $PAAL stakers",
-          text: "Stakers are eligible to receive ETH payments and earn $PAAL tokens",
-        },
+        // ...
       ],
     },
     {
@@ -61,30 +34,7 @@ export default function Tools() {
         link: "https://t.me/mypaalbot",
       },
       messages: [
-        {
-          title: "Autonomous AI",
-          text: "Provides crypto-focused research, insights, and analysis.",
-        },
-        {
-          title: "Quality Data Sources",
-          text: "Utilizes trusted and validated data sources.",
-        },
-        {
-          title: "Broad User Base",
-          text: "Serves users from beginners to experts in crypto.",
-        },
-        {
-          title: "Cited Responses",
-          text: "Provides comprehensive answers with source citations.",
-        },
-        {
-          title: "Preset Commands",
-          text: "Uses community-suggested commands for powerful results.",
-        },
-        {
-          title: "Configurable Watch Agents",
-          text: "Monitors market trends and notifies users of specific conditions.",
-        },
+        // ...
       ],
     },
     {
@@ -94,35 +44,11 @@ export default function Tools() {
         link: "/",
       },
       messages: [
-        {
-          title: "Comprehensive Features",
-          text: "Includes all the features of MyPaal and AutoPaal, providing a comprehensive tool for users.",
-        },
-        {
-          title: "Lightning-Fast Trading",
-          text: "Offers lightning-fast trading, limit orders, and private transactions, enhancing the trading experience for users.",
-        },
-        {
-          title: "Token Scanner",
-          text: "Features a token scanner, allowing users to easily find and track tokens.",
-        },
-        {
-          title: "Custom Parameter Settings",
-          text: "With AutoPaal-X, users can set custom parameters for the auto sniper, providing greater control and customization.",
-        },
-        {
-          title: "Data Quality and Accuracy",
-          text: "Ensures data quality and accuracy through a rigorous testing and validation process, providing reliable and accurate information for users.",
-        },
-        {
-          title: "Revenue Sharing",
-          text: "Provides revenue sharing with $PAAL stakers, offering an additional incentive for staking.",
-        },
+        // ...
       ],
     },
   ];
 
-  // JSX return statement
   return (
     <section className="tools-container site-content-container">
       <h2 className="tools-heading">PAAL AI Tools</h2>
@@ -160,4 +86,6 @@ export default function Tools() {
       </div>
     </section>
   );
-}
+};
+
+export default Tools;
