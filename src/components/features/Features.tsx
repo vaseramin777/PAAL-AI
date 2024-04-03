@@ -4,6 +4,26 @@ import "./Features.scss";
 import FeaturesRobotImage from "../../assets/features/features-robot.png";
 import FeaturesTitleRobotImage from "../../assets/features/features-title-bot.png";
 
+// Define the FeatureCard component
+interface FeatureCardProps {
+  label: string;
+  link: string;
+}
+
+const FeatureCard: FC<FeatureCardProps> = ({ label, link }) => {
+  // Render the FeatureCard component
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="feature-card"
+    >
+      <span className="feature-card-label">{label}</span>
+    </a>
+  );
+};
+
 // Define the Features component
 const Features: FC = () => {
   // Define the data for the first group of features
@@ -57,8 +77,8 @@ const Features: FC = () => {
       {/* Display the feature cards and robot image */}
       <div className="features-gallery site-content-container">
         <div className="feature-cards">
-          {featuresGroupOne.map(({ label, link }, index) => (
-            <FeatureCard key={index} label={label} link={link} />
+          {featuresGroupOne.map((feature, index) => (
+            <FeatureCard key={index} {...feature} />
           ))}
         </div>
 
@@ -84,8 +104,8 @@ const Features: FC = () => {
         </div>
 
         <div className="feature-cards">
-          {featuresGroupTwo.map(({ label, link }, index) => (
-            <FeatureCard key={index} label={label} link={link} />
+          {featuresGroupTwo.map((feature, index) => (
+            <FeatureCard key={index} {...feature} />
           ))}
         </div>
       </div>
@@ -102,15 +122,3 @@ const Features: FC = () => {
 
 // Export the Features component
 export default Features;
-
-// Define the FeatureCard component
-type FeatureCardProps = { label: string; link: string };
-
-const FeatureCard: FC<FeatureCardProps> = ({ label, link }) => {
-  // Render the FeatureCard component
-  return (
-    <a href={link} target="_blank" className="feature-card">
-      <span className="feature-card-label">{label}</span>
-    </a>
-  );
-};
