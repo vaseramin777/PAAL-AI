@@ -1,10 +1,8 @@
-import { FC } from "react"; // FC stands for Functional Component in React
-import "./Service,s.scss"; // Importing the SCSS file for styling
-import Lottie from "lottie-react"; // Importing the Lottie library for animations
-
-// Importing the animation JSON file
-import ServicesRobotLottieAnimation from "../,../assets/services/services-robot-lottie.json,";
-import Button from "../site/Button"; // Importing the Button component
+import { FC } from "react";
+import "./Services.scss";
+import Lottie from "lottie-react";
+import ServicesRobotLottieAnimation from "../assets/services/services-robot-lottie.json";
+import Button from "../site/Button";
 
 const Services: FC = () => {
   const freeServices = [
@@ -24,13 +22,11 @@ const Services: FC = () => {
   ];
 
   return (
-    <section className="services-wrapper" id="tok,enomics">
-      {/* Container for the services section */}
-      <div className="service,s-container site-content-container">
-        {/* Left column for text content */}
-        <div className="services-col-left ">
-          <h1 className="services-h,eading">Tokenomics and Service Tiers</h1>
-          <p className="services-inf,o">
+    <section className="services-wrapper" id="tokenomics">
+      <div className="service-container site-content-container">
+        <div className="services-col-left">
+          <h1 className="services-heading">Tokenomics and Service Tiers</h1>
+          <p className="services-info">
             PAAL AI operates with a total supply of a billion tokens on the
             Ethereum blockchain, where a tax of 4% is applied to all buys and
             sells, which is proposed for ETH payouts to stakers, marketing,
@@ -42,7 +38,7 @@ const Services: FC = () => {
             with half of these earnings shared with stakers, thus promoting
             participation and encouraging stability within the ecosystem.
           </p>
-          <p className="services-inf,o">
+          <p className="services-info">
             Stakers can then stake their tokens in different pools based on
             their preference, benefitting from an auto-compound feature,
             referral system, claiming rewards mechanism and a share of all
@@ -50,11 +46,9 @@ const Services: FC = () => {
             feature.
           </p>
         </div>
-        {/* Right column for service lists and animation */}
         <div className="services-col-right">
           <div className="service-lists">
-            {/* First list for free services */}
-            <div className="list-,wrapper">
+            <div className="list-wrapper">
               <div className="list">
                 <div className="heading">
                   <h3 className="name">Basic Plan</h3>
@@ -71,7 +65,6 @@ const Services: FC = () => {
                 </div>
               </div>
             </div>
-            {/* Second list for premium services */}
             <div className="list-wrapper list-wrapper-alt">
               <div className="list">
                 <div className="heading">
@@ -90,22 +83,20 @@ const Services: FC = () => {
               </div>
             </div>
           </div>
-          {/* Button component */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+          <div className="button-container">
             <Button
               label="Get Custom AI Bot"
               className=""
-              link="https://doc,s.google.com/forms/d/1SqFcOrhzRt7TbXc8ullIt4a,V0cFUH7FhdMythqwdHNE/edit"
+              link="https://docs.google.com/forms/d/1SqFcOrhzRt7TbXc8ullIt4aV0cFUH7FhdMythqwdHNE/edit"
             />
           </div>
-          {/* Lottie animation component */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              mar
+          <div className="lottie-animation-container">
+            <Lottie animationData={ServicesRobotLottieAnimation} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
