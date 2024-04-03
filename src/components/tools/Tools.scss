@@ -1,147 +1,111 @@
 .tools-container {
-    /* Add margin bottom and set background with linear gradient and image */
-    margin-bottom: 4rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/tools/tools-background.svg");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: 100%,;
+  margin-bottom: 4rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/tools/tools-background.svg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
-    /* Media query for screens with max width of 768px */
-    @media (max-width: 768px) {
-        /* Change background size */
-        background-size: 150%;
+  .tools-heading {
+    color: white;
+    font-family: "Monument Extended", sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: 2.6rem;
     }
 
-    /* Styling for tools-heading */
-    .tools-heading {
+    @media (max-width: 480px) {
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+  }
+
+  .split {
+    display: flex;
+    justify-content: space-between;
+    gap: 6rem;
+
+    @media (max-width: 968px) {
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 480px) {
+      gap: 1rem;
+    }
+
+    .selector {
+      flex: 2;
+
+      .selector {
         color: white;
         font-family: "Monument Extended", sans-serif;
-        font-weight: 800;
-        font-size: 3rem;
+        font-size: 1.9rem;
+        padding: 3.6rem 2.4rem;
+        background: linear-gradient(to right, #4c166c -26.79%, rgba(0, 0, 0, 0) 49.09%, #4c166c 11.89%);
+        background-size: 140%;
+        margin: 1rem 0;
+        border-radius: 1.6rem;
+        transition: all 0.3s ease-in;
+        width: 100%;
 
-        /* Media query for screens with max width of 1024px */
+        &.selected {
+          background: #390a56;
+          font-weight: 800;
+        }
+
         @media (max-width: 1024px) {
-            font-size: 2.6rem;
+          font-size: 1.8rem;
+          padding: 2.8rem 2rem;
         }
 
-        /* Media query for screens with max width of 480px */
-        @media (max-width: 480px) {
-            margin-bottom: 0.5rem;
-            font-size: 2rem;
-            text-align: center;
+        @media (max-width: 968px) {
+          font-size: 1.4rem;
+          padding: 1.5rem 1rem;
         }
+
+        @media (max-width: 480px) {
+          font-size: 1.2rem;
+          padding: 1rem;
+          margin: 0.2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
 
-    /* Styling for split */
-    .split {
-        display: flex;
-        justify-content: space-between;
-        gap: 6rem;
+    .content {
+      flex: 3;
 
-        /* Media query for screens with max width of 968px */
+      .list {
+        font-family: "Integral CF", sans-serif;
+        font-size: 1.25rem;
+        color: white;
+        line-height: 1.8em;
+
+        margin-bottom: 5rem;
+
         @media (max-width: 968px) {
-            gap: 2rem;
+          font-size: 1.1rem;
         }
 
-        /* Media query for screens with max width of 768px */
-        @media (max-width: 768px) {
-            flex-direction: column;
-        }
-
-        /* Media query for screens with max width of 480px */
         @media (max-width: 480px) {
-            gap: 1rem;
+          font-size: 0.8rem;
         }
+      }
 
-        /* Styling for selector */
-        .selector {
-            flex: 2;
-
-            /* Styling for selector's selectors */
-            .selector {
-                color: white;
-                font-family: "Monument Extended", sans-serif;
-                font-size: 1.9rem;
-                padding: 3.6rem 2.4rem;
-
-                /* Set background with linear gradient and background size */
-                background: linear-gradient(
-                    to right,
-                    #4c166c -26.79%,
-                    rgba(0, 0, 0, 0) 49.09%,
-                    #4c166c 11.89%
-                );
-                background-size: 140%;
-
-                margin: 1rem 0;
-
-                /* Rounded corners */
-                border-top-right-radius: 1.6rem;
-                border-bottom-right-radius: 1.6rem;
-
-                /* Transition effect */
-                transition: all 0.3s ease-in;
-
-                width: 90%;
-
-                /* Styling for selected selector */
-                &.selected {
-                    background: #390a56;
-                    width: 100%;
-                    font-weight: 800;
-                }
-
-                /* Media query for screens with max width of 1024px */
-                @media (max-width: 1024px) {
-                    font-size: 1.8rem;
-                    padding: 2.8rem 2rem;
-                }
-
-                /* Media query for screens with max width of 968px */
-                @media (max-width: 968px) {
-                    font-size: 1.4rem;
-                    padding: 1.5rem 1rem;
-                }
-
-                /* Media query for screens with max width of 480px */
-                @media (max-width: 480px) {
-                    font-size: 1.2rem;
-                    padding: 1rem;
-                    margin: 0.2rem;
-                }
-
-                /* Hover effect */
-                &:hover {
-                    cursor: pointer;
-                }
-            }
+      .action {
+        @media (max-width: 768px) {
+          /* Add styles here */
         }
-
-        /* Styling for content */
-        .content {
-            flex: 3;
-
-            /* Styling for list */
-            .list {
-                font-family: "Integral CF", sans-serif;
-                font-size: 1.25rem;
-                color: white;
-                line-height: 1.8em;
-
-                margin-bottom: 5rem;
-
-                /* Media query for screens with max width of 968px */
-                @media (max-width: 968px) {
-                    font-size: 1.1rem;
-                }
-
-                /* Media query for screens with max width of 480px */
-                @media (max-width: 480px) {
-                    font-size: 0.8rem;
-                }
-            }
-
-            /* Styling for action */
-            .action {
-                /* Media query for screens with max width of 768px */
-                @media (max-width: 768px)
+      }
+    }
+  }
+}
