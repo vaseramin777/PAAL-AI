@@ -1,50 +1,52 @@
 .socials {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  gap: 1rem;
+}
+
+.socials img {
+  height: 2rem;
+}
+
+.socials.large-icons {
+  font-size: 3rem;
+}
+
+.socials.large-icons img {
+  height: 3rem;
+}
+
+@media (max-width: 768px) {
+  .socials.large-icons {
+    gap: 0.6rem;
     font-size: 2rem;
-    gap: 1rem;
+  }
 
-    img {
-        height: 2rem;
-    }
+  .socials.large-icons img {
+    height: 2rem;
+  }
+}
 
-    &.large-icons {
-        font-size: 3rem;
+@media (max-width: 480px) {
+  .socials.large-icons {
+    font-size: 1.6rem;
+  }
 
-        img {
-            height: 3rem;
-        }
+  .socials.large-icons img {
+    height: 1.6rem;
+  }
 
-        @media (max-width: 768px) {
-            gap: 0.6rem;
-            font-size: 2rem;
+  .socials.small-icons {
+    font-size: 1.2rem;
+  }
 
-            img {
-                height: 2rem;
-            }
-        }
+  .socials.small-icons img {
+    height: 1.2rem;
+  }
+}
 
-        @media (max-width: 480px) {
-            font-size: 1.6rem;
-
-            img {
-                height: 1.6rem;
-            }
-        }
-    }
-
-    &.small-icons {
-        @media (max-width: 480px) {
-            font-size: 1.2rem;
-
-            img {
-                height: 1.2rem;
-            }
-        }
-    }
-
-    .social-link {
-        color: white;
-    }
+.socials .social-link {
+  color: white;
 }
