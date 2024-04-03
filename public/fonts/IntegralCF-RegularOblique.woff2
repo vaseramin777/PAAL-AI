@@ -1,5 +1,6 @@
-# Initialize an empty dictionary to store the frequency of characters
+# Initialize a dictionary to store the frequency of characters
 char_freq = {}
 
 # Initialize a variable to store the total number of characters
-total_chars = 
+total_chars = 0
+
