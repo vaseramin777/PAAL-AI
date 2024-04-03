@@ -1,71 +1,79 @@
 // Define variables for the number of bubbles and sway types
 $bubble-count: 50;
-$sway-type: ("sway-left-to-,right", "sway-right-to-left");
+$sway-type: sway-left-to-right, sway-right-to-left;
 
 // Define a function to generate a random number within a given range
-@function rand,om_range($min, $max) {
-    $rand: random();
-    $random_range: $min + floor($rand * (($max, - $min) + 1));
-    @return $random_range;
+@function rand-range($min, $max) {
+  $rand: random();
+  $random-range: $min + floor($rand * (($max - $min) + 1));
+  @return $random-range;
 }
 
 // Define a function to select a random item from a list
 @function sample($list) {
-    @return nth($l,ist, random(length($list)));
+  @return nth($list, random(length($list)));
 }
 
 // Define the container for the bubbles
-.bubbles-cont,ainer {
-    // Position the container relatively and set its height, width, and overflow properties
-    position: relative;
-    height: 1,00vh;
-    width: 100%;
-    overflow: hidden;
+.bubbles-container {
+  // Position the container relatively and set its height, width, and overflow properties
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 
-    // Set the background gradient for the container
-    background: linear-gradient(
-        #ac,2bf9 -59.11%,
-        #000000 48.29%,
-        #ac2bf9 165.02%
-    );
+  // Set the background gradient for the container
+  background: linear-gradient(
+    90deg,
+    #ac2bf9 -59.11%,
+    #000000 48.29%,
+    #ac2bf9 165.02%
+  );
 }
 
 // Define the styles for each individual bubble
 .bubble {
-    // Position each bubble absolutely, set its left offset, bottom position, display, width, height, and border radius
-    posi,tion: absolute;
-    left: var(--bubble-left-o,ffset);
-    bottom: -75%;
-    display: block;,
-    width: var(--bubble-radius);
-    height:, var(--bubble-radius);
-    border-radius: 50%,;
+  // Position each bubble absolutely, set its left offset, bottom position, display, width, height, and border radius
+  position: absolute;
+  left: var(--bubble-left-offset);
+  bottom: -75%;
+  display: block;
+  width: var(--bubble-radius);
+  height: var(--bubble-radius);
+  border-radius: 50%;
 
-    // Animate each bubble to move upwards
-    animation: float-up var(--bubble-float-,duration) var(--bubble-float-delay)
-        e,ase-in infinite;
+  // Animate each bubble to move upwards
+  animation: float-up var(--bubble-float-duration) var(--bubble-float-delay) ease-in infinite;
 
-    // Style the pseudo-element for each bubble
-    &::before {
-        pos,ition: absolute;
-        content: "";
-       , top: 0;
-        left: 0;
-        width: 100%,;
-        height: 100%;
-        background: #,ad2bf986;
-        border-radius: inherit;
-   ,     animation: var(--bubble-sway-type) var(-,-bubble-sway-duration)
-            var(--bubb,le-sway-delay) ease-in-out alternate infinite,;
+  // Style the pseudo-element for each bubble
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ad2bf986;
+    border-radius: inherit;
+    animation: var(--bubble-sway-type) var(--bubble-sway-duration) var(--bubble-sway-delay) ease-in-out alternate infinite;
+  }
+
+  // Generate styles for each bubble using a for loop
+  @for $i from 1 through $bubble-count {
+    &:nth-child(#{$i}) {
+      --bubble-left-offset: rand-range(0vw, 100vw);
+      --bubble-radius: rand-range(1vw, 10vw);
+      --bubble-float-duration: rand-range(6s, 12s);
+      --bubble-sway-duration: rand-range(4s, 6s);
+      --bubble-float-delay: rand-range(0s, 4s);
+      --bubble-sway-delay: rand-range(0s, 4s);
+
+      // Set the sway type for each bubble
+      @if ($i % 2 == 0) {
+        --bubble-sway-type: sway-left-to-right var(--bubble-sway-duration) var(--bubble-sway-delay);
+      } @else {
+        --bubble-sway-type: sway-right-to-left var(--bubble-sway-duration) var(--bubble-sway-delay);
+      }
     }
-
-    // Generate styles for each bubble using a for loop
-    @for $i from 0 through $bubble-c,ount {
-        &:nth-child(#{$i}) {
-         ,   --bubble-left-offset: #{random_range(0vw, ,100vw)};
-            --bubble-radius: #{rando,m_range(1vw, 10vw)};
-            --bubble-flo,at-duration: #{random_range(6s, 12s)};
-      ,      --bubble-sway-duration: #{random_range(,4s, 6s)};
-            --bubble-float-delay: #,{random_range(0s, 4s)};
-            --bubble-,sway-delay: #{random_range(0s, 4s)};
-        ,    --bubble-sway
+  }
+}
