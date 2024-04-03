@@ -3,6 +3,9 @@ import "./Socials.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faDiscord,
+    faFacebook,
+    faInstagram,
+    faLinkedin,
     faTelegram,
     faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
@@ -17,25 +20,6 @@ type SocialsProps = {
 };
 
 const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
-    // const socialLinks = [
-    //     {
-    //         icon: faFacebook,
-    //         link: "https://facebook.com/",
-    //     },
-    //     {
-    //         icon: faInstagram,
-    //         link: "https://instagram.com/",
-    //     },
-    //     {
-    //         icon: faTwitter,
-    //         link: "https://twitter.com/",
-    //     },
-    //     {
-    //         icon: faLinkedin,
-    //         link: "https://linkedin.com/",
-    //     },
-    // ];
-
     return (
         <div
             className={`
@@ -44,20 +28,16 @@ const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
                 ${small ? "small-icons" : ""}
             `}
         >
-            {/* {socialLinks.map(({ link, icon }, index) => (
-                <a className="social-link" href={link} key={index} target="_blank">
-                    <FontAwesomeIcon icon={icon} />
-                </a>
-            ))} */}
-
             <a
                 className="social-link"
                 href={"https://twitter.com/PaalMind"}
                 target="_blank"
+                rel="noopener noreferrer"
+                title="Twitter"
             >
                 <FontAwesomeIcon
                     icon={faTwitter}
-                    // color="#1DA1F2"
+                    aria-label="Twitter"
                 />
             </a>
 
@@ -65,10 +45,12 @@ const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
                 className="social-link"
                 href={"https://t.me/paal_ai"}
                 target="_blank"
+                rel="noopener noreferrer"
+                title="Telegram"
             >
                 <FontAwesomeIcon
                     icon={faTelegram}
-                    // color="#26A5E4"
+                    aria-label="Telegram"
                 />
             </a>
 
@@ -76,10 +58,12 @@ const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
                 className="social-link"
                 href={"https://discord.gg/paalai"}
                 target="_blank"
+                rel="noopener noreferrer"
+                title="Discord"
             >
                 <FontAwesomeIcon
                     icon={faDiscord}
-                    // color="#5865F2"
+                    aria-label="Discord"
                 />
             </a>
 
@@ -89,8 +73,10 @@ const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
                     "https://www.dextools.io/app/en/ether/pair-explorer/0x2a6c340bcbb0a79d3deecd3bc5cbc2605ea9259f"
                 }
                 target="_blank"
+                rel="noopener noreferrer"
+                title="DexTools"
             >
-                <img src={DexToolsIcon} alt="" />
+                <img src={DexToolsIcon} alt="DexTools" />
             </a>
 
             <a
@@ -99,37 +85,66 @@ const Socials: FC<SocialsProps> = ({ large = false, small = false }) => {
                     "https://www.geckoterminal.com/eth/pools/0x2a6c340bcbb0a79d3deecd3bc5cbc2605ea9259f"
                 }
                 target="_blank"
+                rel="noopener noreferrer"
+                title="GeckoTerminal"
             >
                 <img
                     src={GeckoTerminalIcon}
+                    alt="GeckoTerminal"
                     style={{ filter: "grayscale(100%)" }}
-                    alt=""
                 />
             </a>
             <a
                 className="social-link"
                 href={"https://www.bitmart.com/trade/en-US?symbol=PAAL_USDT"}
                 target="_blank"
+                rel="noopener noreferrer"
+                title="BitMart"
             >
                 <img
                     src={BitMartIcon}
+                    alt="BitMart"
                     style={{ filter: "grayscale(100%)" }}
-                    alt=""
                 />
             </a>
             <a
                 className="social-link"
                 href={"https://www.gate.io/trade/PAAL_USDT"}
                 target="_blank"
+                rel="noopener noreferrer"
+                title="Gate"
             >
                 <img
                     src={GateIcon}
+                    alt="Gate"
                     style={{ filter: "grayscale(100%)" }}
-                    alt=""
                 />
             </a>
-        </div>
-    );
-};
-
-export default Socials;
+            <a
+                className="social-link"
+                href={"https://www.facebook.com/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Facebook"
+            >
+                <FontAwesomeIcon
+                    icon={faFacebook}
+                    aria-label="Facebook"
+                />
+            </a>
+            <a
+                className="social-link"
+                href={"https://www.instagram.com/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+            >
+                <FontAwesomeIcon
+                    icon={faInstagram}
+                    aria-label="Instagram"
+                />
+            </a>
+            <a
+                className="social-link"
+                href={"https://www.linkedin.com/"}
+                target="_
