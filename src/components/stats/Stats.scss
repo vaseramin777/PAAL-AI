@@ -1,52 +1,61 @@
+/* Stats container */
 .stats-container {
 }
 
+/* Stats row */
 .stats-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
 
-    flex-wrap: wrap;
-
-    @media (max-width: 480px) {
-        flex-direction: column;
-    }
+  /* Change flex direction to column on small screens */
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 }
 
+/* Stat item */
 .stat-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-    .stat-number {
-        color: #ac2bf9;
+/* Stat number styles */
+.stat-item .stat-number {
+  color: #ac2bf9;
+  font-family: "Integral CF", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
 
-        font-family: "Integral CF";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 103.298px;
+/* Stat number responsive styles */
+@media (max-width: 1367px) {
+  .stat-item .stat-number {
+    font-size: 70px;
+  }
+}
 
-        text-align: center;
-        text-transform: uppercase;
+@media (max-width: 768px) {
+  .stat-item .stat-number {
+    font-size: 64px;
+  }
+}
 
-        @media (max-width: 1367px) {
-            font-size: 70px;
-        }
+@media (max-width: 480px) {
+  .stat-item .stat-number {
+    font-size: 44px;
+  }
+}
 
-        @media (max-width: 768px) {
-            font-size: 64px;
-        }
-
-        @media (max-width: 480px) {
-            font-size: 44px;
-        }
-    }
-
-    .stat-label {
-        color: white;
-        text-transform: uppercase;
-        font-family: "Integral CF";
-    }
+/* Stat label styles */
+.stat-item .stat-label {
+  color: white;
+  text-transform: uppercase;
+  font-family: "Integral CF", sans-serif;
 }
