@@ -1,74 +1,67 @@
+/* Box sizing and reset margin for all elements */
 * {
-    box-sizing: border-box;
-    // outline: 1px solid red;
+  box-sizing: border-box;
+  margin: 0;
 }
 
+/* Smooth scrolling for the whole document */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
+/* Background and padding for the body */
 body {
-    margin: 0;
-
-    background: black;
+  background: black;
+  padding: 50px 100px;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+}
+
+/* Container for the site content */
 .site-content-container {
-    // max-width: auto;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    padding: 50px 100px 50px 100px;
-    @media (max-width: 480px) {
-        padding: 10px 10px 10px 10px;
-    }
+  max-width: auto;
+  margin: 0 auto;
+  padding: 50px 100px 50px 100px;
 }
 
+/* Center items using flexbox */
 .center-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Font faces for Integral CF and Monument Extended fonts */
+@font-face {
+  font-family: "Integral CF";
+  font-weight: normal;
+  src: url("/fonts/IntegralCF-Regular.woff2");
 }
 
 @font-face {
-    font-family: "Integral CF";
-    src: url("/fonts/IntegralCF-Regular.woff2");
-    font-weight: normal;
+  font-family: "Integral CF";
+  font-weight: bold;
+  src: url("/fonts/IntegralCF-Bold.woff2");
 }
 
 @font-face {
-    font-family: "Integral CF";
-    src: url("/fonts/IntegralCF-Bold.woff2");
-    font-weight: bold;
+  font-family: "Integral CF";
+  font-weight: 600;
+  src: url("/fonts/IntegralCF-DemiBold.woff2");
 }
 
 @font-face {
-    font-family: "Integral CF";
-    src: url("/fonts/IntegralCF-DemiBold.woff2");
-    font-weight: 600;
+  font-family: "Integral CF";
+  font-weight: 800;
+  src: url("/fonts/IntegralCF-ExtraBold.woff2");
 }
 
 @font-face {
-    font-family: "Integral CF";
-    src: url("/fonts/IntegralCF-ExtraBold.woff2");
-    font-weight: 800;
-}
-
-@font-face {
-    font-family: "Integral CF";
-    src: url("/fonts/IntegralCF-Heavy.woff2");
-    font-weight: 900;
-}
-
-@font-face {
-    font-family: "Monument Extended";
-    src: url("/fonts/MonumentExtended-Regular.otf");
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Monument Extended";
-    src: url("/fonts/MonumentExtended-Ultrabold.otf");
-    font-weight: 800;
-}
+  font-family: "Integral CF";
+  font-weight: 900;
+  src: url("/fonts/IntegralCF-Heavy.woff2");
