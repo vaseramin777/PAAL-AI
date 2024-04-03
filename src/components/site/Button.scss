@@ -1,55 +1,56 @@
-.button-wrapper {
-    display: inline-block;
-    background: linear-gradient(
-        96.47deg,
-        #ac2bf9 -59.11%,
-        #000000 48.29%,
-        #ac2bf9 165.02%
-    );
+$primary-color: #ac2bf9;
+$secondary-color: #531279;
+$hover-duration: 0.2s;
 
-    border-radius: 10px;
+@mixin button-styles {
+  display: inline-block;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid $primary-color;
+  color: white;
+  font-family: "Integral CF";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 139.5%;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  transition: background $hover-duration ease-in-out;
 
-    .button {
-        width: 100%;
+  &:hover {
+    cursor: pointer;
+    background: $secondary-color;
+    border: 1px solid transparent;
+  }
 
-        border-radius: 10px;
-        border: 1px solid #ac2bf9;
+  @media (max-width: 1367px) {
+    padding: 0.6rem 1rem;
+  }
 
-        color: white;
-        font-family: "Integral CF";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.5rem;
-        line-height: 139.5%;
-        text-transform: uppercase;
+  @media (max-width: 540px) {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
 
-        padding: 1rem 2rem;
-
-        background: none;
-
-        transition: background 0.2s ease-in-out;
-
-        &-mini {
-            padding: 0.4rem 1rem;
-        }
-
-        &:hover {
-            cursor: pointer;
-            background: #531279;
-            border: 1px solid transparent;
-        }
-
-        @media (max-width: 1367px) {
-            padding: 0.6rem 1rem;
-        }
-
-        @media (max-width: 540px) {
-            padding: 0.6rem 1rem;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            font-size: 0.9rem;
-        }
-    }
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 }
+
+.button-wrapper {
+  display: inline-block;
+  background: linear-gradient(
+    96.47deg,
+    $primary-color -59.11%,
+    #000000 48.29%,
+    $primary-color 165.02%
+  );
+  border-radius: 10px;
+
+  .button {
+    width: 100%;
+    @include button-styles;
+
+    &-mini {
+      padding: 0.4rem 1rem;
+      @include button-
