@@ -1,19 +1,16 @@
 # This is a Python code block
 
-# Importing necessary libraries
+# Import necessary libraries
 import sys
 import os
 import subprocess
 
-
-# Define a function to print greetings
 def print_greetings(name):
     # Print greetings message
     print(f"Hello, {name}! Welcome to the Python world.")
 
-# Define a function to compile and run a C++ program
 def compile_and_run_cpp(file_path):
-    # Get the file name from the path
+    # Get the file name with extension
     file_name = os.path.basename(file_path)
 
     # Get the file directory
@@ -29,35 +26,36 @@ def compile_and_run_cpp(file_path):
     output_file = file_name[:-2] + "out"
 
     # Compile the C++ code
-    compile_cmd = f"{cpp_compiler} {file_path} {cpp_flags} {output_file}"
-    subprocess.run(compile_cmd, shell=True)
+    compile_cmd = [cpp_compiler, file_path, cpp_flags, output_file]
+    subprocess.run(compile_cmd, cwd=file_dir)
 
     # Run the compiled C++ program
-    run_cmd = f"{output_file}"
-    subprocess.run(run_cmd, cwd=file_dir, shell=True)
+    run_cmd = [output_file]
+    subprocess.run(run_cmd, cwd=file_dir)
 
-# Define a function to compile and run a Python script
 def run_python_script(file_path):
-    # Get the file name from the path
+    # Get the file name with extension
     file_name = os.path.basename(file_path)
 
     # Run the Python script
-    run_cmd = f"python {file_path}"
-    subprocess.run(run_cmd, shell=True)
+    run_cmd = ["python", file_path]
+    subprocess.run(run_cmd)
 
-# Get the name from command line arguments
+if len(sys.argv) < 3:
+    print("Please provide a name and a file path.")
+    sys.exit(1)
+
 name = sys.argv[1]
-
-# Print greetings
-print_greetings(name)
-
-# Get the file path from command line arguments
 file_path = sys.argv[2]
 
-# Check if the file is a C++ file
-if file_path[-4:] == ".cpp":
-    # Compile and run the C++ program
-    compile_and_run_cpp(file_path)
+print_greetings(name)
+
+if os.path.exists(file_path) and os.path.isfile(file_path):
+    if file_path.endswith(".cpp"):
+        compile_and_run_cpp(file_path)
+    elif file_path.endswith((".py", ".pyw")):
+        run_python_script(file_path)
+    else:
+        print(f"Unsupported file extension: {os.path.splitext(file_path)[1]}")
 else:
-    # Run the Python script
-    run_python_script(file_path)
+    print("File does not exist or is not a valid file.")
