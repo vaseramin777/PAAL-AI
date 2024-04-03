@@ -12,19 +12,17 @@ cwd = os.getcwd()
 script_name = os.path.basename(sys.argv[0])
 
 # Current time before the script starts
-start_time = time.time()
+start_time = time.perf_counter()
 
 # Printing the script name and current working directory
 print(f'Script Name: {script_name}\nCurrent Working Directory: {cwd}')
 
 # Current time after the script starts
-current_time = time.time()
+current_time = time.perf_counter()
 
 # Calculating and printing the time taken to print the above message
 print(f'Time taken to print the above message: {current_time - start_time:.10f} seconds.')
 
 # Infinite loop
 while True:
-    pass
-# The above loop will keep the script running indefinitely
-
+    time.sleep(1)  # Adding a delay of 1 second to avoid high CPU usage
