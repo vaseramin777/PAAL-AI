@@ -1,23 +1,25 @@
 .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
 
-    .company-logo {
-        height: 75px;
-        margin-top: -30px;
-        margin-left: -70px;
-        @media (max-width: 625px) {
-            height: 2.5rem;
-            margin-left: 0px;
-            margin-top: 0;
-        }
-    }
+.site-header .company-logo {
+  height: 75px;
+  margin-top: -30px;
+  margin-left: -70px;
+  transition: height 0.3s ease;
+}
 
-    .header-action {
-        @media (max-width: 625px) {
-            display: none;
-        }
-    }
+@media (max-width: 625px) {
+  .site-header .company-logo {
+    height: 2.5rem;
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  
+  .site-header .header-action {
+    display: none;
+  }
 }
