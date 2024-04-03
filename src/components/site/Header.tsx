@@ -6,19 +6,23 @@ import MobileNavigation from "./MobileNavigation";
 // import Button from "./Button";
 
 const Header: FC = () => {
-    return (
-        <header className="site-header site-content-container">
-            <img src={PAALAILogo} alt="PAAL AI Logo" className="company-logo" />
+  const handleLogoClick = () => {
+    // handle click event
+  };
 
-            {/* <div className="header-action">
-                <Button
-                    label="Whitepaper"
-                    link="https://paalai.io/whitepaper.pdf"
-                />
-            </div> */}
-            <MobileNavigation />
-        </header>
-    );
-};
+  const handleLogoKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === "Space") {
+      handleLogoClick();
+    }
+  };
 
-export default Header;
+  const handleMobileNavigationKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === "Space") {
+      // handle click event
+    }
+  };
+
+  return (
+    <header className="site-header site-content-container" title="Site Header">
+      <div role="button" tabIndex={0} onClick={handleLogoClick} onKeyDown={handleLogoKeyDown} onFocus={() => {}} onBlur={() => {}}>
+        <img src={PAALAILogo} alt="PAAL AI Logo" aria
