@@ -1,16 +1,24 @@
 import { FC } from "react";
 import "./ColorDrops.scss";
 
-const ColorDrops: FC = () => {
-    const colorDropsCount = 144;
+interface ColorDropProps {
+  index: number;
+}
 
-    return (
-        <div className="color-drops-container">
-            {new Array(colorDropsCount).fill(0).map((_, index) => (
-                <div key={index} className="color-drop"></div>
-            ))}
-        </div>
-    );
+const ColorDrop: FC<ColorDropProps> = ({ index }) => {
+  return <div key={index} className="color-drop" />;
+};
+
+const ColorDrops: FC = () => {
+  const colorDropsCount = 144;
+
+  return (
+    <div className="color-drops-container">
+      {Array.from({ length: colorDropsCount }, (_, index) => (
+        <ColorDrop key={index} index={index} />
+      ))}
+    </div>
+  );
 };
 
 export default ColorDrops;
