@@ -1,14 +1,12 @@
-// Import necessary libraries and components
 import React, { useEffect, useState } from "react";
 import { Combobox } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "../site/Button.tsx";
 import {
   connectorsForWallets,
   RainbowKitProvider,
+  darkTheme,
 } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
@@ -17,138 +15,152 @@ import { injectedWallet, metaMaskWallet, rainbowWallet } from "@rainbow-me/rainb
 import { parseEther, parseUnits } from "viem";
 import PaalTokLogo from "../../assets/site/paal-token.jpeg";
 
-// Define the Swap component
-export default function Swap() {
-  // Initialize state variables
+const Swap = () => {
   const [availableTokens, setAvailableTokens] = useState<any[]>([]);
-  const [selectedTokenSymbol, setSelectedTokenSymbol] = useState("ETH");
+  const [selectedToken, setSelectedToken] = useState<any>({
+    tokenSymbol: "ETH",
+    tokenContractAddress: "",
+  });
   const [equivalentPAALAmount, setEquivalentPAALAmount] = useState(0);
   const [paalTokenInfo, setPaalTokenInfo] = useState<any>({});
   const [wEthTokenInfo, setWethTokenInfo] = useState<any>({});
+  const [tokenAmount, setTokenAmount] = useState("1");
 
-  // Fetch and set available tokens when the component mounts
+  const { chains, publicClient } = configureChains([mainnet], [
+    publicProvider(),
+  ]);
+
+  const wagmiConfig = createConfig({
+    autoConnect: true,
+    connectors: connectorsForWallets([
+      {
+        groupName: "Recommended",
+        wallets: [injectedWallet({ chains }), metaMaskWallet({ chains })],
+      },
+    ]),
+    publicClient,
+  });
+
   useEffect(() => {
-    const whitelistedTokens = ["ETH", "USDT", "USDC"];
-    const API_URL = "https://www.okx.com/api/v5/dex/aggregator";
-    fetch(API_URL + "/all-tokens?chainId=1")
+    const whitelistedTokens = ["ETH", "USDT", "USDC", "PAAL", "WETH"];
+    const API_URL = "https://api.coingecko.com/api/v3/coins/list";
+
+    fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
         if (!data) return;
-        const allowedTokens = data.data.filter((token: any) => {
-          return whitelistedTokens.includes(token.tokenSymbol);
+        const allowedTokens = data.filter((token: any) => {
+          return whitelistedTokens.includes(token.symbol);
         });
         setAvailableTokens(allowedTokens);
-        const paalTokenInfo = data.data.find(
-          (token: any) => token.tokenSymbol === "PAAL"
+        const paalTokenInfo = allowedTokens.find(
+          (token: any) => token.symbol === "PAAL"
         );
-        setPaalTokenInfo(paalTokenInfo);
-        const wEthTokenInfo = data.data.find(
-          (token: any) => token.tokenSymbol === "WETH"
+        setPaalTokenInfo(paalTokenInfo || { tokenLogoUrl: PaalTokLogo });
+        const wEthTokenInfo = allowedTokens.find(
+          (token: any) => token.symbol === "WETH"
         );
-        setWethTokenInfo(wEthTokenInfo);
+        setWethTokenInfo(wEthTokenInfo || { tokenLogoUrl: PaalTokLogo });
       });
   }, []);
 
-  // Set the selected token object based on the selected token symbol
-  const selectedToken =
-    selectedTokenSymbol === "ETH"
-      ? {
-          ...availableTokens.find(
-            (token) => token?.tokenSymbol === selectedTokenSymbol
-          ),
-          tokenContractAddress: wEthTokenInfo?.tokenContractAddress,
-        }
-      : availableTokens.find(
-          (token) => token?.tokenSymbol === selectedTokenSymbol
-        );
+  useEffect(() => {
+    if (selectedToken.tokenSymbol && tokenAmount) {
+      const amount = parseUnits(tokenAmount, selectedToken.decimals);
+      const equivalent = paalTokenInfo.equivalentAmount
+        ? parseEther(paalTokenInfo.equivalentAmount.toString())
+        : 0;
+      setEquivalentPAALAmount(equivalent.toNumber());
+    }
+  }, [selectedToken, tokenAmount]);
 
-  // Initialize state variable for token amount
-  const [tokenAmount, setTokenAmount] = useState("1");
+  const TokenSelect = ({
+    availableTokens,
+    selectedToken,
+    setSelectedToken,
+    selectedTokenImage,
+  }: any) => {
+    return (
+      <Combobox value={selectedToken} onChange={setSelectedToken}>
+        <div className="relative mt-1">
+          <div className="combobox">
+            <Combobox.Button className="combobox-button">
+              <img
+                src={selectedTokenImage}
+                alt=""
+                className="swap-coin-icon"
+              />
+              <span className="coin-name">
+                {selectedToken.tokenSymbol}
+              </span>
+              <FontAwesomeIcon icon={faChevronDown} />
+            </Combobox.Button>
+            <Combobox.Options className="combobox-options">
+              {availableTokens.map((token: any) => (
+                <Combobox.Option
+                  key={token.id}
+                  value={token}
+                  className="combobox-option"
+                >
+                  {({ active }) => (
+                    <>
+                      <div className="flex items-center">
+                        <img
+                          src={token.tokenLogoUrl}
+                          alt=""
+                          className="swap-coin-icon"
+                        />
+                        <span
+                          className={`coin-name ${
+                            active ? "font-bold" : ""
+                          }`}
+                        >
+                          {token.tokenSymbol}
+                        </span>
+                      </div>
+                    </>
+                  )}
+                </Combobox.Option>
+              ))}
+            </Combobox.Options>
+          </div>
+        </div>
+      </Combobox>
+    );
+  };
 
-  // Return the JSX for the Swap component
+  const TokenSwapButton = ({
+    selectedToken,
+    amount,
+    setEquivalentAmount,
+  }: any) => {
+    return (
+      <Button
+        className="w-full"
+        onClick={() => {
+          setEquivalentAmount(
+            parseEther(selectedToken.equivalentAmount.toString()).toNumber()
+          );
+        }}
+      >
+        Swap
+      </Button>
+    );
+  };
+
+  const ConnectButton = () => {
+    return (
+      <Button
+        className="w-full"
+        onClick={() => {
+          // Connect wallet logic
+        }}
+      >
+        Connect Wallet
+      </Button>
+    );
+  };
+
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <section className="site-content container swap-container">
-          <h3>Swap $PAAL</h3>
-
-          {/* Swap methods container */}
-          <div
-            className="swap-methods-container"
-            style={{ display: "flex", gap: "1rem" }}
-          >
-            {/* Token swap section */}
-            <div>
-              <div className="swap-card">
-                <div className="heading">
-                  <span className="label">From</span>
-                  <img
-                    src={selectedToken?.tokenLogoUrl}
-                    alt=""
-                    className="swap-coin-icon"
-                  />
-                  <span className="coin-name">
-                    {selectedToken?.tokenName}
-                  </span>
-                </div>
-
-                <div className="select-row" style={{ marginBottom: "3rem" }}>
-                  <div>
-                    <TokenSelect
-                      availableTokens={availableTokens}
-                      selectedToken={selectedTokenSymbol}
-                      setSelectedToken={setSelectedTokenSymbol}
-                      selectedTokenImage={
-                        selectedToken?.tokenLogoUrl || PaalTokLogo
-                      }
-                    />
-                  </div>
-
-                  <div className="stats">
-                    <input
-                      type="number"
-                      placeholder="1"
-                      value={tokenAmount}
-                      onChange={(e) => {
-                        setTokenAmount(e.target.value);
-                      }}
-                      onBlur={(e) => {
-                        const numAmount = parseFloat(e.target.value);
-                        setTokenAmount(
-                          numAmount > 0 ? numAmount.toString() : "1"
-                        );
-                      }}
-                    />
-                    {/*<span>$1,869.81</span>*/}
-                  </div>
-                </div>
-
-                <div className="select-row">
-                  <div className="token-search">
-                    <img
-                      src={paalTokenInfo?.tokenLogoUrl || PaalTokLogo}
-                      alt=""
-                      className="coin-icon"
-                    />
-                    <span className="input">PAAL</span>
-                  </div>
-
-                  <div className="stats">
-                    <input
-                      disabled
-                      type="number"
-                      value={equivalentPAALAmount.toFixed(2)}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="connect-button-container">
-                <TokenSwapButton
-                  selectedToken={selectedToken}
-                  amount={tokenAmount}
-                  setEquivalentAmount={setEquivalentPAALAmount}
-                />
-
-                <ConnectButton />
-              </div>
+      <RainbowKitProvider
